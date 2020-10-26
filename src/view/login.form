@@ -115,7 +115,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="btLogin">
       <Properties>
-        <Property name="label" type="java.lang.String" value=""/>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <Events>

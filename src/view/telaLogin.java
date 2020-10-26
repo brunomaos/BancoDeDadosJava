@@ -138,16 +138,16 @@ public class telaLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        User user = new User();
-        user.setName(nameCT.getText());
-        user.setSenha(senhaCT.getText());
-        cldao.creat(user);
+//        User user = new User();
+//        user.setName(nameCT.getText());
+//        user.setSenha(senhaCT.getText());
+//        cldao.creat(user);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void botao2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao2ActionPerformed
         
-        txtNome.setText(cldao.getNameUser());
-        txtSenha.setText(cldao.getSenha());
+//        txtNome.setText(cldao.getNameUser());
+//        txtSenha.setText(cldao.getSenha());
     }//GEN-LAST:event_botao2ActionPerformed
 
     private void botaoDELLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDELLActionPerformed

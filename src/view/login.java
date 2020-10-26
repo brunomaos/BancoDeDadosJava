@@ -5,14 +5,17 @@
  */
 package view;
 
+import control.FerramentasLoginDAO;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author bruno.schneider
  */
 public class login extends javax.swing.JFrame {
-
+    FerramentasLoginDAO flog = new FerramentasLoginDAO();
+    
     /**
      * Creates new form login
      */
@@ -97,7 +100,15 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
-        System.out.println("Cadastro");
+        String x = "";
+        for(char c : campoTxtSenha.getPassword()){
+            x += c;
+        }
+        if(flog.getLogin(campoTxtNome.getText(), x) == true){
+            JOptionPane.showMessageDialog(this, "Login efetuado com sucesso!!");
+        }else{
+            JOptionPane.showMessageDialog(this, "Login incorreto!!");
+        }
     }//GEN-LAST:event_btLoginActionPerformed
 
     private void btCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastroActionPerformed

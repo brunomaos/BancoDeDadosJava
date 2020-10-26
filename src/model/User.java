@@ -15,9 +15,17 @@ public class User {
     private String email;
     private int telefone;
 
+    public User(String name, String senha) {
+        this.name = name;
+        this.senha = senha;
+    }
+    
+    
+    
     public User(String name, String senha, int cpf,
             int numMatricula, String curso, int turma,
             int modulo, String email, int telefone) {
+        
         this.name = name;
         this.senha = senha;
         this.cpf = cpf;

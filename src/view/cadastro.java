@@ -5,14 +5,16 @@
  */
 package view;
 
+import control.FerramentasLoginDAO;
 import java.awt.Color;
+import model.User;
 
 /**
  *
  * @author bruno.schneider
  */
 public class cadastro extends javax.swing.JFrame {
-
+    FerramentasLoginDAO flog = new FerramentasLoginDAO();
     /**
      * Creates new form NewJFrame
      */
@@ -52,6 +54,7 @@ public class cadastro extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btVoltar = new javax.swing.JButton();
+        btCadastro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -118,6 +121,15 @@ public class cadastro extends javax.swing.JFrame {
         });
         getContentPane().add(btVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 80, 60, 60));
 
+        btCadastro.setText("jButton1");
+        btCadastro.setOpaque(false);
+        btCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(687, 320, 110, 130));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -129,6 +141,18 @@ public class cadastro extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_btVoltarActionPerformed
+
+    private void btCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastroActionPerformed
+        User u = new User(campoNome.getText(), campoSenha.getText());
+        int cpf = Integer.parseInt(campoCpf.getText());
+        int numMatricula = Integer.parseInt(campoNumMatricula.getText());
+        int turma = Integer.parseInt(campoTurma.getText());
+        int modulo = Integer.parseInt(campoModulo.getText());
+        int telefone = Integer.parseInt(campoTelefone.getText());
+        u = new User(campoNome.getText(), campoSenha.getText() , cpf , numMatricula ,
+         campoCurso.getText(), turma, modulo ,campoEmail.getText(), telefone);
+        flog.creat(u);
+    }//GEN-LAST:event_btCadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,6 +191,7 @@ public class cadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btCadastro;
     private javax.swing.JButton btVoltar;
     private javax.swing.JTextField campoCpf;
     private javax.swing.JTextField campoCurso;

@@ -24,15 +24,24 @@ public class FerramentasLoginDAO {
         Statement st = null;
         ResultSet rs = null;
         PreparedStatement stmt = null;
-        String instrucaoSQL = "Select * from log";
+        String instrucaoSQL = "select name , senha from aluno";
    
-        public void creat(User u){
+    public void creat(User u){
         
         
         try {
-            stmt = (PreparedStatement) con.prepareStatement("INSERT INTO log (name , senha)VALUES(?,?)");
-            stmt.setString(1, u.name);
-            stmt.setString(2, u.senha);
+            stmt = (PreparedStatement) con.prepareStatement("INSERT INTO aluno(numMatricula,name,senha\n" +
+            ",cpf ,curso,turma, modulo, email, telefone)VALUES(?,?,?,?,?,?,?,?,?)");
+            
+            stmt.setInt(1, u.getNumMatricula());
+            stmt.setString(2, u.getName());
+            stmt.setString(3, u.getSenha());
+            stmt.setInt(4, u.getCpf());
+            stmt.setString(5, u.getCurso());
+            stmt.setInt(6, u.getTurma());
+            stmt.setInt(7, u.getModulo());
+            stmt.setString(8, u.getEmail());
+            stmt.setInt(9, u.getTelefone());
            
             
             stmt.executeUpdate();
@@ -45,41 +54,26 @@ public class FerramentasLoginDAO {
         
     }
         
-    public String getNameUser() {
-            String name = null ;
+    public boolean getLogin(String nome , String senha) {
+            boolean name = false ;
             try {
                 Class.forName(DRIVER);
                 conexao = ConnectFactory.getConnection();
                 st = conexao.createStatement();
                 rs = st.executeQuery(instrucaoSQL);
-                rs.next();
-                name = rs.getString(2);
+                while(rs.next()){
+                    if(nome.equals(rs.getString(1)) && senha.equals(rs.getString(2))){
+                        name = true;
+                    }
+                }
                 
             } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(FerramentasLoginDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }finally{
-                ConnectFactory.closeConnection((com.mysql.jdbc.Connection) conexao, (PreparedStatement) st, rs);
             }
+
             return name;
     }
     
-    public String getSenha(){
-            String senha ="";
-            try {
-                Class.forName(DRIVER);
-                conexao = ConnectFactory.getConnection();
-                st = conexao.createStatement();
-                rs = st.executeQuery(instrucaoSQL);
-                rs.next();
-                senha = rs.getString(3);
-                
-            } catch (SQLException | ClassNotFoundException ex) {
-                Logger.getLogger(FerramentasLoginDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }finally{
-                ConnectFactory.closeConnection((com.mysql.jdbc.Connection) conexao, (PreparedStatement) st, rs);
-            }
-            return senha;
-    }
     public void deletarTodosOsDados(){
             try {
                 conexao = ConnectFactory.getConnection();

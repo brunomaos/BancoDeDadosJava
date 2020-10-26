@@ -22,7 +22,7 @@ public class ConnectFactory {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:3306/login";
     private static final String USER = "root";
-    private static final String PASS = "Lub@2020";
+    private static final String PASS = "";
     
     public static Connection getConnection(){
         
@@ -43,6 +43,7 @@ public class ConnectFactory {
             System.out.println("ERRO AO FECHAR CONEXAO" + ex);
         }
     }
+    
     public static void closeConnection(Connection con , PreparedStatement stmt){
         closeConnection(con);
         try{
@@ -53,6 +54,7 @@ public class ConnectFactory {
             System.out.println("ERRO AO FECHAR CONEXAO stmt" + ex);
         }
     }
+    
     public static void closeConnection(Connection con , PreparedStatement stmt , ResultSet rs){
         closeConnection(con, stmt);
         try{
